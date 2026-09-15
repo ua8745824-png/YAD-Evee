@@ -1,14 +1,15 @@
 /**
  * YAD Auto Industries - Components & Modules Stylesheet
+ * Polished Automotive Layouts & Conversion-Focused UX
  */
 
 /* ==========================================================================
    1. Announcement Bar
    ========================================================================== */
 .announcement-bar {
-  background: linear-gradient(90deg, #0b1a13 0%, #152e1f 50%, #0b1a13 100%);
-  border-bottom: 1px solid rgba(0, 240, 152, 0.2);
-  padding: 0.5rem 0;
+  background: linear-gradient(90deg, #09140e 0%, #102418 50%, #09140e 100%);
+  border-bottom: 1px solid rgba(0, 240, 152, 0.18);
+  padding: 0.45rem 0;
   font-size: 0.82rem;
   color: var(--text-secondary);
 }
@@ -31,13 +32,13 @@
   height: 8px;
   background-color: var(--primary);
   border-radius: 50%;
-  box-shadow: 0 0 10px var(--primary);
-  animation: pulseDot 1.8s infinite;
+  box-shadow: 0 0 8px var(--primary);
+  animation: pulseDot 2s infinite;
 }
 
 @keyframes pulseDot {
-  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 240, 152, 0.7); }
-  70% { transform: scale(1.1); box-shadow: 0 0 0 8px rgba(0, 240, 152, 0); }
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 240, 152, 0.6); }
+  70% { transform: scale(1.1); box-shadow: 0 0 0 7px rgba(0, 240, 152, 0); }
   100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 240, 152, 0); }
 }
 
@@ -49,9 +50,12 @@
   font-size: 0.78rem;
 }
 
-.announcement-right a {
+.announcement-link {
   color: var(--primary);
   text-decoration: underline;
+  cursor: pointer;
+  background: none;
+  border: none;
 }
 
 /* ==========================================================================
@@ -61,7 +65,7 @@
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: rgba(8, 11, 18, 0.85);
+  background: rgba(8, 12, 19, 0.88);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--border-subtle);
@@ -69,7 +73,7 @@
 }
 
 .site-header.scrolled {
-  background: rgba(6, 9, 14, 0.95);
+  background: rgba(6, 9, 14, 0.96);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
   border-bottom-color: rgba(0, 240, 152, 0.2);
 }
@@ -91,18 +95,18 @@
 .logo-symbol {
   width: 42px;
   height: 42px;
-  background: linear-gradient(135deg, #102118 0%, #1a3826 100%);
+  background: linear-gradient(135deg, #0e1e16 0%, #163322 100%);
   border: 1.5px solid var(--primary);
   border-radius: var(--radius-sm);
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 0 15px var(--primary-glow);
+  box-shadow: 0 0 14px var(--primary-glow);
 }
 
 .logo-symbol svg {
-  width: 24px;
-  height: 24px;
+  width: 22px;
+  height: 22px;
   fill: var(--primary);
 }
 
@@ -115,7 +119,7 @@
   font-family: var(--font-heading);
   font-size: 1.35rem;
   font-weight: 800;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.04em;
   color: #ffffff;
   line-height: 1.1;
 }
@@ -136,12 +140,12 @@
 .nav-menu {
   display: flex;
   align-items: center;
-  gap: 1.8rem;
+  gap: 1.5rem;
 }
 
 .nav-link {
   font-family: var(--font-heading);
-  font-size: 0.92rem;
+  font-size: 0.9rem;
   font-weight: 500;
   color: var(--text-secondary);
   position: relative;
@@ -205,7 +209,7 @@
   padding: 2rem 1.5rem;
   display: flex;
   flex-direction: column;
-  gap: 1.2rem;
+  gap: 1.1rem;
   transform: translateY(-120%);
   opacity: 0;
   visibility: hidden;
@@ -220,15 +224,15 @@
 }
 
 .drawer-link {
-  font-size: 1.15rem;
+  font-size: 1.1rem;
   font-weight: 600;
   color: var(--text-main);
-  padding: 0.6rem 0;
+  padding: 0.55rem 0;
   border-bottom: 1px solid var(--border-subtle);
 }
 
 /* ==========================================================================
-   3. Hero Section
+   3. Hero Section (Automotive Grade)
    ========================================================================== */
 .hero-section {
   position: relative;
@@ -241,12 +245,12 @@
 
 .hero-glow-bg {
   position: absolute;
-  top: -20%;
+  top: -15%;
   left: 50%;
   transform: translateX(-50%);
-  width: 900px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(0, 240, 152, 0.12) 0%, rgba(6, 182, 212, 0.05) 50%, rgba(0,0,0,0) 80%);
+  width: 950px;
+  height: 520px;
+  background: radial-gradient(circle, rgba(0, 240, 152, 0.1) 0%, rgba(6, 182, 212, 0.04) 50%, rgba(0,0,0,0) 80%);
   filter: blur(80px);
   pointer-events: none;
   z-index: 0;
@@ -254,7 +258,7 @@
 
 .hero-grid {
   display: grid;
-  grid-template-columns: 1.1fr 1fr;
+  grid-template-columns: 1.15fr 1fr;
   gap: 3.5rem;
   align-items: center;
   position: relative;
@@ -275,7 +279,7 @@
 
 .hero-title {
   font-family: var(--font-heading);
-  font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+  font-size: clamp(2.4rem, 4.2vw, 3.6rem);
   font-weight: 900;
   line-height: 1.12;
   letter-spacing: -0.03em;
@@ -283,17 +287,17 @@
 }
 
 .hero-subtitle {
-  font-size: 1.15rem;
+  font-size: 1.12rem;
   color: var(--text-secondary);
   line-height: 1.7;
-  max-width: 540px;
+  max-width: 560px;
 }
 
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
-  margin-top: 0.5rem;
+  margin-top: 0.4rem;
 }
 
 /* Hero Telemetry Floating Bar */
@@ -301,11 +305,11 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
-  background: rgba(16, 22, 34, 0.7);
+  background: rgba(14, 20, 32, 0.7);
   backdrop-filter: blur(12px);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
-  padding: 1.2rem 1.4rem;
+  padding: 1.1rem 1.3rem;
   margin-top: 1rem;
   box-shadow: var(--shadow-md);
 }
@@ -325,7 +329,7 @@
 
 .hud-label {
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   text-transform: uppercase;
   color: var(--text-muted);
   letter-spacing: 0.5px;
@@ -333,7 +337,7 @@
 
 .hud-val {
   font-family: var(--font-heading);
-  font-size: 1.4rem;
+  font-size: 1.35rem;
   font-weight: 800;
   color: #ffffff;
 }
@@ -356,7 +360,7 @@
   width: 100%;
   max-width: 580px;
   border-radius: var(--radius-lg);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(0, 240, 152, 0.15);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 35px rgba(0, 240, 152, 0.12);
   border: 1px solid rgba(255, 255, 255, 0.1);
   transition: transform var(--transition-smooth);
 }
@@ -367,9 +371,9 @@
 
 .hero-floating-card {
   position: absolute;
-  bottom: -20px;
-  left: 20px;
-  background: rgba(16, 22, 34, 0.85);
+  bottom: -18px;
+  left: 15px;
+  background: rgba(14, 20, 32, 0.9);
   backdrop-filter: blur(14px);
   border: 1px solid rgba(0, 240, 152, 0.35);
   border-radius: var(--radius-sm);
@@ -378,12 +382,6 @@
   align-items: center;
   gap: 0.8rem;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
-  animation: floatCard 4s ease-in-out infinite alternate;
-}
-
-@keyframes floatCard {
-  0% { transform: translateY(0); }
-  100% { transform: translateY(-8px); }
 }
 
 .floating-icon {
@@ -400,7 +398,7 @@
    4. Trust & Highlight Strip
    ========================================================================== */
 .trust-strip {
-  background: #0d121c;
+  background: #0b0f18;
   border-top: 1px solid var(--border-subtle);
   border-bottom: 1px solid var(--border-subtle);
   padding: 2.2rem 0;
@@ -419,9 +417,9 @@
 }
 
 .trust-icon {
-  width: 48px;
-  height: 48px;
-  min-width: 48px;
+  width: 46px;
+  height: 46px;
+  min-width: 46px;
   border-radius: var(--radius-sm);
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid var(--border-subtle);
@@ -432,7 +430,7 @@
 
 .trust-text h4 {
   font-family: var(--font-heading);
-  font-size: 1rem;
+  font-size: 0.98rem;
   font-weight: 700;
   color: #fff;
 }
@@ -443,12 +441,273 @@
 }
 
 /* ==========================================================================
-   5. Interactive Color Visualizer & 3D HUD
+   5. EXPLORE YAD VEHICLES - Automotive Product Showcase
    ========================================================================== */
-.visualizer-section {
-  position: relative;
+.products-filter-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
 }
 
+.products-filter-tab {
+  padding: 0.65rem 1.6rem;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-subtle);
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.products-filter-tab:hover {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.products-filter-tab.active {
+  background: var(--primary);
+  color: #04140c;
+  border-color: var(--primary);
+  box-shadow: 0 0 20px var(--primary-glow);
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: 2.2rem;
+}
+
+.product-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: all var(--transition-normal);
+}
+
+.product-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(0, 240, 152, 0.35);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.65), 0 0 25px rgba(0, 240, 152, 0.12);
+}
+
+.card-featured {
+  border-color: rgba(245, 158, 11, 0.35);
+}
+
+.card-featured:hover {
+  border-color: var(--gold);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.65), 0 0 25px var(--gold-glow);
+}
+
+.card-badge-wrap {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 5;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.product-img-wrapper {
+  position: relative;
+  background: radial-gradient(circle at 50% 50%, #151e30 0%, #0c121d 100%);
+  height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 1.2rem;
+}
+
+.product-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  transition: transform var(--transition-smooth);
+}
+
+.product-card:hover .product-img {
+  transform: scale(1.05);
+}
+
+.product-hover-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(6, 9, 14, 0.7);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+}
+
+.product-card:hover .product-hover-overlay {
+  opacity: 1;
+}
+
+.product-info {
+  padding: 1.6rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 1.2rem;
+}
+
+.product-series {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  color: var(--primary);
+  letter-spacing: 1px;
+}
+
+.product-name {
+  font-family: var(--font-heading);
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: #fff;
+  margin: 0.2rem 0;
+}
+
+.product-tagline {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+
+.product-specs-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.8rem;
+  background: rgba(8, 12, 20, 0.6);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 0.85rem;
+}
+
+.spec-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.spec-label {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--text-dim);
+  text-transform: uppercase;
+}
+
+.spec-value {
+  font-family: var(--font-heading);
+  font-size: 0.96rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.product-highlights {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.highlight-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+}
+
+.product-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 1.2rem;
+  margin-top: auto;
+}
+
+.price-wrap {
+  display: flex;
+  flex-direction: column;
+}
+
+.price-label {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.price-val {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--gold);
+}
+
+/* ==========================================================================
+   6. WHY YAD Section (Authentic Engineering Pillars)
+   ========================================================================== */
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.8rem;
+}
+
+.why-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  transition: all var(--transition-fast);
+}
+
+.why-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(0, 240, 152, 0.35);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+}
+
+.why-icon-wrap {
+  width: 50px;
+  height: 50px;
+  border-radius: var(--radius-sm);
+  background: rgba(0, 240, 152, 0.1);
+  border: 1px solid rgba(0, 240, 152, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary);
+}
+
+.why-card h3 {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.why-card p {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+
+/* ==========================================================================
+   7. Interactive 360° Color Visualizer & Studio
+   ========================================================================== */
 .vis-container-card {
   background: radial-gradient(circle at 50% 30%, #151e2f 0%, #0c111a 100%);
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -626,7 +885,6 @@
   font-weight: 500;
 }
 
-/* Live Telemetry Spec Grid */
 .vis-spec-telemetry {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -645,7 +903,7 @@
 
 .telemetry-label {
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   text-transform: uppercase;
   color: var(--text-dim);
 }
@@ -658,220 +916,181 @@
 }
 
 /* ==========================================================================
-   6. Products Lineup Grid
+   8. Battery & Engineering Technology
    ========================================================================== */
-.products-filter-bar {
-  display: flex;
-  justify-content: center;
-  gap: 0.8rem;
-  margin-bottom: 3rem;
-  flex-wrap: wrap;
-}
-
-.products-filter-tab {
-  padding: 0.65rem 1.6rem;
-  border-radius: var(--radius-full);
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid var(--border-subtle);
-  font-family: var(--font-heading);
-  font-weight: 600;
-  font-size: 0.95rem;
-  color: var(--text-secondary);
-  cursor: pointer;
-  transition: all var(--transition-fast);
-}
-
-.products-filter-tab:hover {
-  color: #fff;
-  border-color: rgba(255, 255, 255, 0.25);
-}
-
-.products-filter-tab.active {
-  background: var(--primary);
-  color: #04140c;
-  border-color: var(--primary);
-  box-shadow: 0 0 20px var(--primary-glow);
-}
-
-.products-grid {
+.battery-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
-  gap: 2rem;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.8rem;
+  align-items: center;
 }
 
-.product-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border-subtle);
+.battery-visual-card {
+  position: relative;
   border-radius: var(--radius-lg);
   overflow: hidden;
+  border: 1px solid var(--border-subtle);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+}
+
+.battery-visual-img {
+  width: 100%;
+  display: block;
+}
+
+.battery-content {
   display: flex;
   flex-direction: column;
+  gap: 1.8rem;
+}
+
+.battery-card-tech {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1.6rem;
   position: relative;
   transition: all var(--transition-normal);
 }
 
-.product-card:hover {
-  transform: translateY(-6px);
+.battery-card-tech:hover {
   border-color: rgba(0, 240, 152, 0.4);
-  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6), 0 0 30px rgba(0, 240, 152, 0.15);
+  transform: translateX(4px);
 }
 
-.card-featured {
-  border-color: rgba(245, 158, 11, 0.4);
+.battery-card-tech.tech-lifepo4 {
+  border-color: rgba(245, 158, 11, 0.3);
 }
 
-.card-featured:hover {
+.battery-card-tech.tech-lifepo4:hover {
   border-color: var(--gold);
-  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6), 0 0 30px var(--gold-glow);
 }
 
-.card-badge-wrap {
-  position: absolute;
-  top: 1rem;
-  left: 1rem;
-  z-index: 5;
+.tech-header {
   display: flex;
-  gap: 0.5rem;
-}
-
-.product-img-wrapper {
-  position: relative;
-  background: radial-gradient(circle at 50% 50%, #172235 0%, #0c121d 100%);
-  height: 250px;
-  display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  padding: 1.2rem;
+  margin-bottom: 0.8rem;
 }
 
-.product-img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-  transition: transform var(--transition-smooth);
-}
-
-.product-card:hover .product-img {
-  transform: scale(1.05);
-}
-
-.product-hover-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(6, 9, 14, 0.7);
-  backdrop-filter: blur(4px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  transition: opacity var(--transition-normal);
-}
-
-.product-card:hover .product-hover-overlay {
-  opacity: 1;
-}
-
-.product-info {
-  padding: 1.6rem;
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  gap: 1.2rem;
-}
-
-.product-series {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  color: var(--primary);
-  letter-spacing: 1px;
-}
-
-.product-name {
+.tech-title {
   font-family: var(--font-heading);
-  font-size: 1.45rem;
-  font-weight: 800;
-  color: #fff;
-  margin: 0.2rem 0;
-}
-
-.product-tagline {
-  font-size: 0.88rem;
-  color: var(--text-muted);
-}
-
-.product-specs-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 0.8rem;
-  background: rgba(8, 12, 20, 0.6);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-sm);
-  padding: 0.85rem;
-}
-
-.spec-box {
-  display: flex;
-  flex-direction: column;
-}
-
-.spec-label {
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  color: var(--text-dim);
-  text-transform: uppercase;
-}
-
-.spec-value {
-  font-family: var(--font-heading);
-  font-size: 0.98rem;
+  font-size: 1.22rem;
   font-weight: 700;
   color: #fff;
 }
 
-.product-highlights {
+.tech-specs-pills {
   display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0.8rem 0;
 }
 
-.highlight-item {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.82rem;
+.tech-pill {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-subtle);
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-xs);
   color: var(--text-secondary);
 }
 
-.product-footer {
-  display: flex;
+/* ==========================================================================
+   9. Manufacturing & Quality Control (Lahore Plant)
+   ========================================================================== */
+.factory-showcase-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 3.2rem;
   align-items: center;
-  justify-content: space-between;
-  border-top: 1px solid var(--border-subtle);
-  padding-top: 1.2rem;
-  margin-top: auto;
 }
 
-.price-wrap {
-  display: flex;
-  flex-direction: column;
+.factory-img-wrap {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--border-subtle);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
 }
 
-.price-label {
-  font-size: 0.72rem;
-  color: var(--text-muted);
+.factory-img {
+  width: 100%;
+  display: block;
 }
 
-.price-val {
+.factory-stats-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.factory-stat-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 1rem;
+  text-align: center;
+}
+
+.factory-stat-num {
   font-family: var(--font-heading);
-  font-size: 1.25rem;
+  font-size: 1.6rem;
   font-weight: 800;
+  color: var(--primary);
+}
+
+.factory-stat-num.gold {
   color: var(--gold);
 }
 
+.factory-stat-desc {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
 /* ==========================================================================
-   7. Real-Time PKR Fuel vs EV Savings Calculator
+   10. Service, Warranty & After-Sales Support
+   ========================================================================== */
+.support-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.support-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  transition: all var(--transition-fast);
+}
+
+.support-card:hover {
+  border-color: rgba(245, 158, 11, 0.35);
+  transform: translateY(-4px);
+}
+
+.support-card h4 {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.support-card p {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   11. Real-Time PKR Fuel vs EV Savings Calculator
    ========================================================================== */
 .calculator-card {
   background: radial-gradient(circle at 10% 20%, #151e2f 0%, #0d121c 90%);
@@ -920,7 +1139,6 @@
   border-radius: var(--radius-full);
 }
 
-/* Custom Range Slider */
 .calc-range-slider {
   -webkit-appearance: none;
   width: 100%;
@@ -944,7 +1162,7 @@
 }
 
 .calc-range-slider::-webkit-slider-thumb:hover {
-  transform: scale(1.2);
+  transform: scale(1.15);
 }
 
 .vehicle-type-radios {
@@ -984,7 +1202,6 @@
   color: #fff;
 }
 
-/* Calculator Output Results */
 .calc-results {
   display: flex;
   flex-direction: column;
@@ -1003,7 +1220,7 @@
 
 .calc-saving-title {
   font-family: var(--font-mono);
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   text-transform: uppercase;
   color: var(--text-muted);
   letter-spacing: 1px;
@@ -1085,143 +1302,54 @@
 }
 
 /* ==========================================================================
-   8. Battery & Engineering Tech
+   12. News & EV Insights
    ========================================================================== */
-.battery-grid {
+.news-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2.5rem;
-  align-items: center;
-}
-
-.battery-visual-card {
-  position: relative;
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  border: 1px solid var(--border-subtle);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
-}
-
-.battery-visual-img {
-  width: 100%;
-  display: block;
-}
-
-.battery-content {
-  display: flex;
-  flex-direction: column;
+  grid-template-columns: repeat(3, 1fr);
   gap: 1.8rem;
 }
 
-.battery-card-tech {
+.news-card {
   background: var(--bg-card);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
-  padding: 1.6rem;
-  position: relative;
-  transition: all var(--transition-normal);
+  padding: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  transition: all var(--transition-fast);
 }
 
-.battery-card-tech:hover {
-  border-color: rgba(0, 240, 152, 0.4);
-  transform: translateX(4px);
+.news-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(0, 240, 152, 0.3);
 }
 
-.battery-card-tech.tech-lifepo4 {
-  border-color: rgba(245, 158, 11, 0.3);
-}
-
-.battery-card-tech.tech-lifepo4:hover {
-  border-color: var(--gold);
-}
-
-.tech-header {
+.news-meta {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  margin-bottom: 0.8rem;
-}
-
-.tech-title {
-  font-family: var(--font-heading);
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: #fff;
-}
-
-.tech-specs-pills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin: 0.8rem 0;
-}
-
-.tech-pill {
   font-family: var(--font-mono);
   font-size: 0.75rem;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid var(--border-subtle);
-  padding: 0.25rem 0.65rem;
-  border-radius: var(--radius-xs);
-  color: var(--text-secondary);
+  color: var(--text-dim);
 }
 
-/* ==========================================================================
-   9. Factory & Manufacturing Facility
-   ========================================================================== */
-.factory-showcase-grid {
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 3rem;
-  align-items: center;
-}
-
-.factory-img-wrap {
-  position: relative;
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  border: 1px solid var(--border-subtle);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
-}
-
-.factory-img {
-  width: 100%;
-  display: block;
-}
-
-.factory-stats-row {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
-  margin-top: 1.5rem;
-}
-
-.factory-stat-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-sm);
-  padding: 1rem;
-  text-align: center;
-}
-
-.factory-stat-num {
+.news-card h3 {
   font-family: var(--font-heading);
-  font-size: 1.6rem;
-  font-weight: 800;
-  color: var(--primary);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.35;
 }
 
-.factory-stat-num.gold {
-  color: var(--gold);
-}
-
-.factory-stat-desc {
-  font-size: 0.75rem;
+.news-card p {
+  font-size: 0.88rem;
   color: var(--text-muted);
+  line-height: 1.6;
 }
 
 /* ==========================================================================
-   10. Dealership Network & Locator
+   13. Dealership Network & Locator
    ========================================================================== */
 .dealer-filter-pills {
   display: flex;
@@ -1305,7 +1433,7 @@
 }
 
 /* ==========================================================================
-   11. FAQs Accordion
+   14. FAQs Accordion
    ========================================================================== */
 .faq-container {
   max-width: 820px;
@@ -1371,7 +1499,28 @@
 }
 
 /* ==========================================================================
-   12. Proposal & Test Ride Interactive Modals
+   15. Final Conversion Banner CTA ("Ready to Move Electric?")
+   ========================================================================== */
+.final-cta-section {
+  position: relative;
+  background: radial-gradient(circle at 50% 50%, #152233 0%, #090e18 100%);
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+  padding: 5.5rem 0;
+  text-align: center;
+}
+
+.final-cta-content {
+  max-width: 700px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+/* ==========================================================================
+   16. Proposal & Test Ride Interactive Modals
    ========================================================================== */
 .modal-container {
   position: fixed;
@@ -1460,7 +1609,6 @@
   margin-bottom: 1.8rem;
 }
 
-/* Forms inside Modals */
 .form-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1538,20 +1686,7 @@ select.form-control option {
   color: var(--text-secondary);
 }
 
-.compare-img-wrap img {
-  max-height: 90px;
-  margin: 0.5rem auto;
-}
-
-.compare-price {
-  font-family: var(--font-heading);
-  font-weight: 800;
-  color: var(--gold);
-}
-
-/* ==========================================================================
-   13. Toast Notification Component
-   ========================================================================== */
+/* Toast Notification */
 .toast-container {
   position: fixed;
   bottom: 2rem;
@@ -1598,7 +1733,7 @@ select.form-control option {
 }
 
 /* ==========================================================================
-   14. Footer (Faithfully Matched to User Screenshot & Enhanced)
+   17. Footer & Locations
    ========================================================================== */
 .site-footer {
   background: #06090e;
@@ -1651,13 +1786,14 @@ select.form-control option {
   gap: 0.8rem;
 }
 
-.footer-quick-links a {
+.footer-quick-links a, .footer-quick-links button {
   color: #9ca3af;
   font-size: 0.98rem;
   transition: all var(--transition-fast);
+  text-align: left;
 }
 
-.footer-quick-links a:hover {
+.footer-quick-links a:hover, .footer-quick-links button:hover {
   color: #f59e0b;
   transform: translateX(4px);
 }
@@ -1695,7 +1831,7 @@ select.form-control option {
 }
 
 /* ==========================================================================
-   15. Floating WhatsApp & Back-To-Top
+   18. Floating WhatsApp & Back-To-Top
    ========================================================================== */
 .floating-actions-wrap {
   position: fixed;

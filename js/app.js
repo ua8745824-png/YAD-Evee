@@ -1,13 +1,17 @@
 /**
  * YAD Auto Industries - Main Application Orchestrator
+ * Comprehensive automotive-grade rendering & interactivity
  */
 
 document.addEventListener("DOMContentLoaded", () => {
   initNavbar();
   renderProductsGrid("all");
   initProductTabs();
-  renderDealersList();
+  renderWhyYad();
+  renderServiceSupport();
+  renderDealersList("all");
   initDealerFilter();
+  renderNewsGrid();
   renderFaqs();
   initScrollAnimations();
   initStatsCounters();
@@ -89,7 +93,7 @@ function initNavbar() {
    ========================================================================== */
 function renderProductsGrid(filterCategory = "all") {
   const container = document.getElementById("products-grid-container");
-  if (!container) return;
+  if (!container || !window.YAD_DATA) return;
 
   const filtered = YAD_DATA.models.filter(m => {
     if (filterCategory === "all") return true;
@@ -109,7 +113,7 @@ function renderProductsGrid(filterCategory = "all") {
       <div class="product-img-wrapper">
         <img src="${model.image}" alt="${model.name}" loading="lazy" class="product-img" />
         <div class="product-hover-overlay">
-          <button type="button" class="btn btn-sm btn-outline-light" onclick="window.vehicleVisualizer.setModel('${model.id}'); document.getElementById('visualizer').scrollIntoView({behavior: 'smooth'});">
+          <button type="button" class="btn btn-sm btn-outline-light" onclick="if(window.vehicleVisualizer){ window.vehicleVisualizer.setModel('${model.id}'); document.getElementById('visualizer').scrollIntoView({behavior: 'smooth'}); }">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
             Interactive 360 View
           </button>
@@ -118,7 +122,7 @@ function renderProductsGrid(filterCategory = "all") {
 
       <div class="product-info">
         <div class="product-header">
-          <div class="product-series">${model.series} Series</div>
+          <div class="product-series">${model.series}</div>
           <h3 class="product-name">${model.name}</h3>
           <p class="product-tagline">${model.tagline}</p>
         </div>
@@ -180,11 +184,65 @@ function initProductTabs() {
 }
 
 /* ==========================================================================
-   3. Dealerships & Showroom Network
+   3. Why YAD - 6 Brand Pillars
+   ========================================================================== */
+function renderWhyYad() {
+  const container = document.getElementById("why-yad-grid-container");
+  if (!container || !window.YAD_DATA || !YAD_DATA.whyYAD) return;
+
+  const iconSvgMap = {
+    factory: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00f098" stroke-width="2"><path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/></svg>`,
+    battery: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00f098" stroke-width="2"><rect width="16" height="10" x="2" y="7" rx="2" ry="2"/><line x1="22" x2="22" y1="11" y2="13"/><polyline points="7 12 11 9 10 15 14 12"/></svg>`,
+    savings: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00f098" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><path d="M12 18V6"/></svg>`,
+    shield: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00f098" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`,
+    support: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00f098" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>`,
+    leaf: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00f098" stroke-width="2"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>`
+  };
+
+  container.innerHTML = YAD_DATA.whyYAD.map(item => `
+    <div class="why-card">
+      <div class="why-card-icon">
+        ${iconSvgMap[item.icon] || iconSvgMap.factory}
+      </div>
+      <h3 class="why-card-title">${item.title}</h3>
+      <p class="why-card-desc">${item.desc}</p>
+    </div>
+  `).join("");
+}
+
+/* ==========================================================================
+   4. Service & Warranty Support
+   ========================================================================== */
+function renderServiceSupport() {
+  const container = document.getElementById("support-grid-container");
+  if (!container || !window.YAD_DATA || !YAD_DATA.serviceSupport) return;
+
+  const supportIcons = [
+    `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00f098" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`,
+    `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 14 14"/></svg>`,
+    `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#06b6d4" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>`,
+    `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#a855f7" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>`
+  ];
+
+  container.innerHTML = YAD_DATA.serviceSupport.map((item, idx) => `
+    <div class="support-card">
+      <div class="support-card-header">
+        <div class="support-icon">
+          ${supportIcons[idx] || supportIcons[0]}
+        </div>
+        <h3 class="support-title">${item.title}</h3>
+      </div>
+      <p class="support-desc">${item.desc}</p>
+    </div>
+  `).join("");
+}
+
+/* ==========================================================================
+   5. Dealerships & Showroom Network
    ========================================================================== */
 function renderDealersList(filterCity = "all") {
   const container = document.getElementById("dealers-grid-container");
-  if (!container) return;
+  if (!container || !window.YAD_DATA || !YAD_DATA.dealers) return;
 
   const filtered = YAD_DATA.dealers.filter(d => {
     if (filterCity === "all") return true;
@@ -236,11 +294,30 @@ function initDealerFilter() {
 }
 
 /* ==========================================================================
-   4. FAQs Accordion
+   6. News & EV Insights
+   ========================================================================== */
+function renderNewsGrid() {
+  const container = document.getElementById("news-grid-container");
+  if (!container || !window.YAD_DATA || !YAD_DATA.newsUpdates) return;
+
+  container.innerHTML = YAD_DATA.newsUpdates.map(item => `
+    <div class="news-card">
+      <div class="news-meta">
+        <span class="news-date">${item.date}</span>
+        <span class="badge badge-gold">${item.tag}</span>
+      </div>
+      <h3 class="news-title">${item.title}</h3>
+      <p class="news-desc">${item.desc}</p>
+    </div>
+  `).join("");
+}
+
+/* ==========================================================================
+   7. FAQs Accordion
    ========================================================================== */
 function renderFaqs() {
   const container = document.getElementById("faq-accordion-container");
-  if (!container) return;
+  if (!container || !window.YAD_DATA || !YAD_DATA.faqs) return;
 
   container.innerHTML = YAD_DATA.faqs.map((faq, idx) => `
     <div class="faq-item ${idx === 0 ? 'active' : ''}">
@@ -275,7 +352,7 @@ function renderFaqs() {
 }
 
 /* ==========================================================================
-   5. Interactive Counters & Scroll Observer
+   8. Interactive Counters & Scroll Observer
    ========================================================================== */
 function initStatsCounters() {
   const counters = document.querySelectorAll(".counter-val");
@@ -331,7 +408,7 @@ function initScrollAnimations() {
 }
 
 /* ==========================================================================
-   6. WhatsApp Floating Quick Inquiry Widget & Back to Top
+   9. WhatsApp Floating Quick Inquiry Widget & Back to Top
    ========================================================================== */
 function initWhatsAppWidget() {
   const backToTop = document.getElementById("back-to-top-btn");

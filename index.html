@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>YAD Auto Industries | Pakistan's Leading Electric Scooty & EV Manufacturer</title>
-  <meta name="description" content="YAD Auto Industries (Pvt.) Ltd. - Manufacturer of high-performance electric bikes, smart scooties, and commercial EVs in Lahore, Pakistan. 100% Environment Friendly, Zero Emissions, Save up to 85% on fuel." />
+  <meta name="description" content="YAD Auto Industries (Pvt.) Ltd. - Pakistan's premier electric scooty and commercial EV manufacturer in Lahore. 100% Environment Friendly, Zero Emissions, Save up to 85% on fuel." />
   <meta name="keywords" content="Electric Scooty Pakistan, EV Bike Lahore, YAD Auto Industries, YAD EV2-7, YAD EV2-4, YAD EV2-1, Electric Scooter Manufacturer Pakistan, Graphene Battery Scooty, LiFePO4 EV, Sunder Industrial Estate Lahore" />
   
   <!-- Open Graph Meta Tags -->
@@ -12,6 +12,11 @@
   <meta property="og:description" content="Pakistan's leading manufacturer of electric bikes and commercial EVs. Explore EV2 series scooties, calculate petrol savings, and book a free test ride." />
   <meta property="og:image" content="assets/images/hero_scooty.jpg" />
   <meta property="og:type" content="website" />
+
+  <!-- Google Fonts Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
 
   <!-- Stylesheets -->
   <link rel="stylesheet" href="css/style.css" />
@@ -34,7 +39,7 @@
       </div>
       <div class="announcement-right">
         <span>🏭 Factory: 91-B Sunder Small Industrial Estate, Lahore</span>
-        <button type="button" data-open-modal="dealership" style="color: var(--primary); text-decoration: underline; cursor: pointer;">Apply for Dealership →</button>
+        <button type="button" data-open-modal="dealership" style="color: var(--primary); text-decoration: underline; cursor: pointer; background: none; border: none; font: inherit;">Apply for Dealership →</button>
       </div>
     </div>
   </aside>
@@ -60,13 +65,15 @@
       <!-- Desktop Navigation -->
       <nav class="nav-menu" aria-label="Primary Navigation">
         <a href="#home" class="nav-link active">Home</a>
+        <a href="#models" class="nav-link">Vehicles</a>
+        <a href="#why-yad" class="nav-link">Why YAD</a>
         <a href="#visualizer" class="nav-link">360° Studio</a>
-        <a href="#models" class="nav-link">Models</a>
-        <a href="#calculator" class="nav-link">Savings Calculator</a>
-        <a href="#technology" class="nav-link">Battery Tech</a>
+        <a href="#calculator" class="nav-link">Savings</a>
+        <a href="#technology" class="nav-link">Technology</a>
         <a href="#manufacturing" class="nav-link">Factory</a>
-        <a href="#dealerships" class="nav-link">Dealer Network</a>
-        <a href="#faq" class="nav-link">FAQ</a>
+        <a href="#service-support" class="nav-link">Support</a>
+        <a href="#dealerships" class="nav-link">Dealers</a>
+        <a href="#news" class="nav-link">News</a>
         <a href="#contact" class="nav-link">Contact</a>
       </nav>
 
@@ -90,12 +97,15 @@
     <!-- Mobile Drawer -->
     <nav class="mobile-nav-drawer" id="mobile-nav-drawer" aria-label="Mobile Navigation">
       <a href="#home" class="drawer-link">Home</a>
-      <a href="#visualizer" class="drawer-link">360° Color Customizer</a>
-      <a href="#models" class="drawer-link">Vehicle Models (EV2 & EV3)</a>
+      <a href="#models" class="drawer-link">Vehicles Lineup (EV2 & EV3)</a>
+      <a href="#why-yad" class="drawer-link">Why Choose YAD</a>
+      <a href="#visualizer" class="drawer-link">360° Studio & Colors</a>
       <a href="#calculator" class="drawer-link">PKR Fuel Savings Calculator</a>
-      <a href="#technology" class="drawer-link">Battery Technology</a>
+      <a href="#technology" class="drawer-link">Battery & Engineering Tech</a>
       <a href="#manufacturing" class="drawer-link">Made in Lahore Factory</a>
+      <a href="#service-support" class="drawer-link">Service & Warranty Support</a>
       <a href="#dealerships" class="drawer-link">Authorized Dealerships</a>
+      <a href="#news" class="drawer-link">News & EV Insights</a>
       <a href="#faq" class="drawer-link">Frequently Asked Questions</a>
       <a href="#contact" class="drawer-link">Contact & Locations</a>
       <div style="display: flex; gap: 0.8rem; margin-top: 1rem;">
@@ -223,12 +233,62 @@
   </section>
 
   <!-- ========================================================================
-       5. Interactive 360° Studio & Color Customizer HUD
+       5. EXPLORE YAD VEHICLES Lineup (EV2 & EV3)
        ======================================================================== -->
-  <section class="section visualizer-section" id="visualizer">
+  <section class="section section-bg-alt" id="models">
     <div class="container">
       <div class="section-header">
-        <span class="section-tag">Interactive Customizer</span>
+        <span class="section-tag tag-gold">2025/2026 Product Lineup</span>
+        <h2 class="section-title">Explore <span class="text-gradient">YAD Vehicles</span></h2>
+        <p class="section-description">
+          From nimble city commuters to high-speed sport flagships and commercial cargo trikes. Built to deliver maximum range, safety, and fuel savings.
+        </p>
+      </div>
+
+      <!-- Filter Tabs & Compare Button -->
+      <div class="products-filter-bar">
+        <button type="button" class="products-filter-tab active" data-category="all">All Vehicles</button>
+        <button type="button" class="products-filter-tab" data-category="2-wheeler">2-Wheeler Scooties (EV2)</button>
+        <button type="button" class="products-filter-tab" data-category="3-wheeler">Commercial 3-Wheelers (EV3)</button>
+        <button type="button" class="btn btn-outline-gold" data-open-modal="compare" style="margin-left: auto;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          Compare Full Specs Matrix
+        </button>
+      </div>
+
+      <!-- Products Grid -->
+      <div class="products-grid" id="products-grid-container">
+        <!-- Injected dynamically via app.js and data.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       6. WHY YAD - 6 Brand Pillars
+       ======================================================================== -->
+  <section class="section" id="why-yad">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Why Choose YAD</span>
+        <h2 class="section-title">Engineered for Pakistan. <span class="text-gradient">Built for Reliability.</span></h2>
+        <p class="section-description">
+          Discover why thousands of Pakistani commuters, students, families, and commercial logistics fleets trust YAD Auto Industries.
+        </p>
+      </div>
+
+      <div class="why-yad-grid" id="why-yad-grid-container">
+        <!-- Injected dynamically via app.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       7. Interactive 360° Studio & Color Customizer HUD
+       ======================================================================== -->
+  <section class="section section-bg-alt visualizer-section" id="visualizer">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag tag-gold">Interactive Customizer</span>
         <h2 class="section-title">Design Your <span class="text-gradient">YAD Electric Scooty</span></h2>
         <p class="section-description">
           Explore models in real-time. Switch colors, inspect live telemetry specs, test the silent electric motor tone, and configure your dream EV.
@@ -300,7 +360,7 @@
             </div>
 
             <!-- Estimated Price & Booking Action -->
-            <div style="display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--border-subtle); padding-top: 1.2rem;">
+            <div style="display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--border-subtle); padding-top: 1.2rem; flex-wrap: wrap; gap: 1rem;">
               <div>
                 <div style="font-size: 0.75rem; color: var(--text-muted);">Estimated Factory Price</div>
                 <div style="font-family: var(--font-heading); font-size: 1.5rem; font-weight: 800; color: var(--gold);" id="vis-model-price">PKR 385,000</div>
@@ -316,38 +376,7 @@
   </section>
 
   <!-- ========================================================================
-       6. Vehicle Models Lineup (EV2 & EV3)
-       ======================================================================== -->
-  <section class="section section-bg-alt" id="models">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag tag-gold">2025/2026 Product Lineup</span>
-        <h2 class="section-title">Engineered for <span class="text-gradient">Every Rider & Business</span></h2>
-        <p class="section-description">
-          From compact student scooties to high-speed sport flagships and commercial heavy-duty delivery trikes.
-        </p>
-      </div>
-
-      <!-- Filter Tabs & Compare Button -->
-      <div class="products-filter-bar">
-        <button type="button" class="products-filter-tab active" data-category="all">All Vehicles</button>
-        <button type="button" class="products-filter-tab" data-category="2-wheeler">2-Wheeler Scooties (EV2)</button>
-        <button type="button" class="products-filter-tab" data-category="3-wheeler">Commercial 3-Wheelers (EV3)</button>
-        <button type="button" class="btn btn-outline-gold" data-open-modal="compare" style="margin-left: auto;">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-          Compare Full Specs Matrix
-        </button>
-      </div>
-
-      <!-- Products Grid -->
-      <div class="products-grid" id="products-grid-container">
-        <!-- Injected dynamically via app.js and data.js -->
-      </div>
-    </div>
-  </section>
-
-  <!-- ========================================================================
-       7. Interactive Petrol vs EV PKR Savings Calculator
+       8. Interactive Petrol vs EV PKR Savings Calculator
        ======================================================================== -->
   <section class="section" id="calculator">
     <div class="container">
@@ -377,7 +406,7 @@
                 <button type="button" class="btn btn-xs btn-outline" data-set-km="40">40 km</button>
                 <button type="button" class="btn btn-xs btn-outline" data-set-km="60">60 km</button>
                 <button type="button" class="btn btn-xs btn-outline" data-set-km="80">80 km</button>
-                <button type="button" class="btn btn-xs btn-outline" data-set-km="120">120 km (Rider)</button>
+                <button type="button" class="btn btn-xs btn-outline" data-set-km="120">120 km (Delivery)</button>
               </div>
             </div>
 
@@ -421,7 +450,7 @@
             </div>
 
             <div style="font-size: 0.8rem; color: var(--text-dim); line-height: 1.5;">
-              ℹ️ Calculations include fuel expenditure plus routine engine oil changes, spark plugs, filters, and chain tuning vs YAD EV electricity unit costs (@ PKR 48/kWh).
+              ℹ️ Calculations include fuel expenditure plus routine engine oil changes, spark plugs, filters, and tuning vs YAD EV electricity unit costs (@ PKR 48/kWh).
             </div>
           </div>
 
@@ -486,7 +515,7 @@
   </section>
 
   <!-- ========================================================================
-       8. Battery Technology & Engineering
+       9. Battery Technology & Engineering
        ======================================================================== -->
   <section class="section section-bg-alt" id="technology">
     <div class="container">
@@ -556,7 +585,7 @@
   </section>
 
   <!-- ========================================================================
-       9. Made in Pakistan Manufacturing Facility (Lahore)
+       10. Made in Pakistan Manufacturing Facility (Lahore)
        ======================================================================== -->
   <section class="section" id="manufacturing">
     <div class="container">
@@ -569,7 +598,7 @@
             Located at <strong>91-B Sunder Small Industrial Estate, Lahore</strong>, our modern manufacturing facility is equipped with automated chassis welding, computerized dynamometer testing, and stringent multi-stage safety inspections.
           </p>
 
-          <ul style="display: flex; flex-direction: column; gap: 0.8rem; font-size: 0.95rem; color: var(--text-secondary);">
+          <ul style="display: flex; flex-direction: column; gap: 0.8rem; font-size: 0.95rem; color: var(--text-secondary); list-style: none;">
             <li style="display: flex; align-items: center; gap: 0.6rem;">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00f098" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
               <span>Automated Robotic Frame Alignment for Pakistani Road Pothole Durability</span>
@@ -610,9 +639,28 @@
   </section>
 
   <!-- ========================================================================
-       10. Dealership & Showroom Network
+       11. Service & Warranty Support
        ======================================================================== -->
-  <section class="section section-bg-alt" id="dealerships">
+  <section class="section section-bg-alt" id="service-support">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">After-Sales & Warranty</span>
+        <h2 class="section-title">Comprehensive <span class="text-gradient">Service & Support</span></h2>
+        <p class="section-description">
+          We back every electric scooty with complete warranty protection, 100% genuine spare parts availability, and trained technicians across Pakistan.
+        </p>
+      </div>
+
+      <div class="support-grid" id="support-grid-container">
+        <!-- Injected dynamically via app.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       12. Dealership & Showroom Network
+       ======================================================================== -->
+  <section class="section" id="dealerships">
     <div class="container">
       <div class="section-header">
         <span class="section-tag tag-gold">Authorized Centers</span>
@@ -655,7 +703,51 @@
   </section>
 
   <!-- ========================================================================
-       11. Frequently Asked Questions
+       13. News & EV Insights
+       ======================================================================== -->
+  <section class="section section-bg-alt" id="news">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag tag-gold">Latest Updates</span>
+        <h2 class="section-title">News & <span class="text-gradient">EV Insights</span></h2>
+        <p class="section-description">
+          Stay informed with the latest company milestones, manufacturing expansions, and electric mobility updates across Pakistan.
+        </p>
+      </div>
+
+      <div class="news-grid" id="news-grid-container">
+        <!-- Injected dynamically via app.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       14. Ready to Move Electric? CTA Section
+       ======================================================================== -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-banner">
+        <span class="badge badge-gold" style="margin-bottom: 0.8rem;">Join 15,000+ Happy Riders Across Pakistan</span>
+        <h2 class="cta-title">Ready to Experience <span class="text-gradient">Silent, Low-Cost Power?</span></h2>
+        <p class="cta-subtitle">
+          Book a free test ride at your nearest YAD showroom or speak with our Lahore sales engineering team today.
+        </p>
+        <div class="cta-buttons">
+          <button type="button" class="btn btn-lg btn-primary" data-open-modal="test-ride" data-model-id="ev2-7">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            Book Free Test Ride
+          </button>
+          <button type="button" class="btn btn-lg btn-outline-gold" data-open-modal="dealership">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
+            Apply for Dealership
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       15. Frequently Asked Questions
        ======================================================================== -->
   <section class="section" id="faq">
     <div class="container">
@@ -674,7 +766,7 @@
   </section>
 
   <!-- ========================================================================
-       12. Contact Us & Inquiries
+       16. Contact Us & Inquiries
        ======================================================================== -->
   <section class="section section-bg-alt" id="contact">
     <div class="container">
@@ -754,7 +846,7 @@
   </section>
 
   <!-- ========================================================================
-       13. Footer (Faithfully Formatted to User Screenshot & Enhanced)
+       17. Footer
        ======================================================================== -->
   <footer class="site-footer">
     <div class="container">
@@ -771,20 +863,22 @@
           </div>
         </div>
 
-        <!-- Col 2: Quick Links (from Screenshot) -->
+        <!-- Col 2: Quick Links -->
         <div class="footer-col">
           <h4 class="footer-gold-heading">QUICK LINKS</h4>
           <nav class="footer-quick-links" aria-label="Footer Quick Links">
             <a href="#home">Home</a>
-            <a href="#manufacturing">Profile</a>
-            <a href="#models">Products</a>
-            <button type="button" data-open-modal="dealership" style="text-align: left; color: #9ca3af; font-size: 0.98rem; cursor: pointer; padding: 0;">Proposal Form</button>
+            <a href="#models">Vehicles</a>
+            <a href="#why-yad">Why YAD</a>
+            <a href="#manufacturing">Manufacturing Plant</a>
+            <a href="#service-support">Service & Warranty</a>
+            <button type="button" data-open-modal="dealership" style="text-align: left; color: #9ca3af; font-size: 0.98rem; cursor: pointer; padding: 0; background: none; border: none;">Dealership Proposal</button>
             <a href="#faq">FAQ</a>
             <a href="#contact">Contact Us</a>
           </nav>
         </div>
 
-        <!-- Col 3: Our Locations (from Screenshot) -->
+        <!-- Col 3: Our Locations -->
         <div class="footer-col">
           <h4 class="footer-gold-heading">OUR LOCATIONS</h4>
           <div class="footer-locations-list">
@@ -800,7 +894,7 @@
         </div>
       </div>
 
-      <!-- Copyright Bar (from Screenshot) -->
+      <!-- Copyright Bar -->
       <div class="footer-bottom-bar">
         <div>
           © 2025 YAD Auto Industries (Pvt.) Ltd. — All Rights Reserved · Lahore, Pakistan
@@ -814,7 +908,7 @@
   </footer>
 
   <!-- ========================================================================
-       14. Interactive Modals
+       18. Interactive Modals
        ======================================================================== -->
 
   <!-- Modal 1: Book Test Ride -->
@@ -955,7 +1049,7 @@
   </div>
 
   <!-- ========================================================================
-       15. Floating Action Widgets
+       19. Floating Action Widgets
        ======================================================================== -->
   <div class="floating-actions-wrap">
     <!-- WhatsApp Direct Chat Button -->

@@ -1,8 +1,5 @@
 {
   "version": 2,
-  "functions": {
-    "index.js": {
-      "includeFiles": "{assets/**,css/**,js/**,index.html}"
-    }
-  }
+  "cleanUrls": true,
+  "trailingSlash": false
 }
