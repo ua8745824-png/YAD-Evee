@@ -62,4 +62,4 @@ Simply double-click `index.html` to open it directly in any modern browser.
 
 ---
 
-© 2025 YAD Auto Industries (Pvt.) Ltd. — All Rights Reserved · Lahore, Pakistan
+© 2025 YAD Auto Industries (Pvt.) Ltd. — Maintained by [@ua8745824-png](https://github.com/ua8745824-png) · Lahore, Pakistan
