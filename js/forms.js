@@ -1,5 +1,6 @@
 /**
  * YAD Auto Industries - Interactive Forms, Modals & Toast Manager
+ * Robust Event Delegation & Interactive Modal Orchestration
  */
 
 class FormModalManager {
@@ -9,44 +10,51 @@ class FormModalManager {
   }
 
   init() {
-    this.bindTriggers();
+    this.bindDelegatedEvents();
     this.bindFormSubmissions();
     this.setupEscapeKey();
   }
 
-  bindTriggers() {
-    // Open Test Ride Modal Buttons
-    document.querySelectorAll("[data-open-modal='test-ride']").forEach(btn => {
-      btn.addEventListener("click", (e) => {
+  bindDelegatedEvents() {
+    // Universal Global Click Delegation for all modal triggers and close buttons
+    document.addEventListener("click", (e) => {
+      // 1. Open Test Ride Modal Trigger
+      const testRideTrigger = e.target.closest("[data-open-modal='test-ride']");
+      if (testRideTrigger) {
         e.preventDefault();
-        const modelId = btn.getAttribute("data-model-id") || "ev2-7";
+        const modelId = testRideTrigger.getAttribute("data-model-id") || "ev2-7";
         this.openTestRideModal(modelId);
-      });
-    });
+        return;
+      }
 
-    // Open Dealership Proposal Modal Buttons
-    document.querySelectorAll("[data-open-modal='dealership']").forEach(btn => {
-      btn.addEventListener("click", (e) => {
+      // 2. Open Dealership Modal Trigger
+      const dealershipTrigger = e.target.closest("[data-open-modal='dealership']");
+      if (dealershipTrigger) {
         e.preventDefault();
         this.openModal("modal-dealership");
-      });
-    });
+        return;
+      }
 
-    // Open Model Compare Modal
-    document.querySelectorAll("[data-open-modal='compare']").forEach(btn => {
-      btn.addEventListener("click", (e) => {
+      // 3. Open Compare Specs Matrix Modal Trigger
+      const compareTrigger = e.target.closest("[data-open-modal='compare']");
+      if (compareTrigger) {
         e.preventDefault();
         this.openCompareModal();
-      });
-    });
+        return;
+      }
 
-    // Close Modal Buttons
-    document.querySelectorAll(".modal-close, .modal-backdrop").forEach(el => {
-      el.addEventListener("click", (e) => {
-        if (e.target === el) {
-          this.closeAllModals();
-        }
-      });
+      // 4. Modal Close Buttons (X button or Backdrop)
+      const closeTrigger = e.target.closest(".modal-close");
+      if (closeTrigger) {
+        e.preventDefault();
+        this.closeAllModals();
+        return;
+      }
+
+      if (e.target.classList.contains("modal-backdrop") || e.target.classList.contains("modal-container")) {
+        this.closeAllModals();
+        return;
+      }
     });
   }
 
@@ -57,6 +65,12 @@ class FormModalManager {
       modal.classList.add("active");
       document.body.classList.add("modal-open");
       this.activeModal = modal;
+
+      // Focus first input if available
+      setTimeout(() => {
+        const firstInput = modal.querySelector("input, select, textarea");
+        if (firstInput) firstInput.focus();
+      }, 100);
     }
   }
 
@@ -94,20 +108,22 @@ class FormModalManager {
     const ev2Models = YAD_DATA.models.filter(m => m.series === "EV2");
 
     let tableHtml = `
-      <div class="table-responsive">
+      <div class="table-responsive" style="overflow-x: auto;">
         <table class="compare-table">
           <thead>
             <tr>
               <th class="feature-col">Feature / Specification</th>
               ${ev2Models.map(m => `
                 <th class="model-col ${m.id === 'ev2-7' ? 'flagship-col' : ''}">
-                  <span class="compare-badge">${m.badge}</span>
-                  <h4>${m.name}</h4>
+                  <span class="badge ${m.id === 'ev2-7' ? 'badge-gold' : 'badge-green'}">${m.badge}</span>
+                  <h4 style="margin: 0.4rem 0; font-size: 1.15rem; color: #fff;">${m.name}</h4>
                   <div class="compare-img-wrap">
-                    <img src="${m.image}" alt="${m.name}" />
+                    <img src="${m.image}" alt="${m.name}" style="max-height: 85px; object-fit: contain; margin: 0.4rem auto;" />
                   </div>
-                  <div class="compare-price">${m.estimatedPrice}</div>
-                  <button class="btn btn-sm btn-primary mt-2" onclick="window.formModalManager.openTestRideModal('${m.id}')">Book Ride</button>
+                  <div class="compare-price" style="font-weight: 800; color: var(--gold);">${m.estimatedPrice}</div>
+                  <button type="button" class="btn btn-xs btn-primary mt-2" data-open-modal="test-ride" data-model-id="${m.id}" style="margin-top: 0.5rem;">
+                    Book Ride
+                  </button>
                 </th>
               `).join("")}
             </tr>
@@ -123,7 +139,7 @@ class FormModalManager {
             </tr>
             <tr>
               <td class="feature-title">Battery Chemistry</td>
-              ${ev2Models.map(m => `<td><span class="badge ${m.batteryType.includes('LiFePO4') ? 'badge-gold' : 'badge-green'}">${m.batteryType}</span></td>`).join("")}
+              ${ev2Models.map(m => `<td><span class="badge ${m.batteryType.includes('LiFePO4') ? 'badge-gold' : 'badge-green'}">${m.batteryType.includes('LiFePO4') ? 'LiFePO4 Lithium' : 'Graphene Max'}</span></td>`).join("")}
             </tr>
             <tr>
               <td class="feature-title">Battery Voltage & Capacity</td>
@@ -151,7 +167,7 @@ class FormModalManager {
             </tr>
             <tr>
               <td class="feature-title">Warranty Coverage</td>
-              ${ev2Models.map(m => `<td>${m.id === 'ev2-7' ? '3 Years Battery' : '1 Year Graphene / 2 Yrs Motor'}</td>`).join("")}
+              ${ev2Models.map(m => `<td>${m.id === 'ev2-7' ? '3 Years LiFePO4' : '1 Year Graphene / 2 Yrs Motor'}</td>`).join("")}
             </tr>
           </tbody>
         </table>
@@ -168,12 +184,12 @@ class FormModalManager {
       testRideForm.addEventListener("submit", (e) => {
         e.preventDefault();
         const formData = new FormData(testRideForm);
-        const name = formData.get("fullName") || "Customer";
-        const phone = formData.get("phone");
-        const city = formData.get("city");
-        const model = formData.get("model");
+        const name = formData.get("fullName") || "Valued Customer";
+        const phone = formData.get("phone") || "";
+        const city = formData.get("city") || "Lahore";
+        const model = formData.get("model") || "YAD EV";
 
-        this.showToast(`🎉 Test Ride Booked! Our ${city} team will contact ${name} at ${phone} to confirm your slot.`, "success");
+        this.showToast(`🎉 Test Ride Booked! Our ${city} team will contact ${name} (${phone}) to confirm your test ride.`, "success");
         testRideForm.reset();
         this.closeAllModals();
       });
@@ -186,30 +202,22 @@ class FormModalManager {
         e.preventDefault();
         const formData = new FormData(dealershipForm);
         const applicantName = formData.get("applicantName") || "Partner";
-        const city = formData.get("dealershipCity");
+        const city = formData.get("dealershipCity") || "your city";
 
-        this.showToast(`💼 Dealership Proposal Received! Our Head Office Executive Team will review your application for ${city} and reach out within 24 hours.`, "success");
+        this.showToast(`💼 Proposal Received! Our Head Office Executive Team in Lahore will review your franchise request for ${city} and reach out within 24 hours.`, "success");
         dealershipForm.reset();
         this.closeAllModals();
       });
     }
 
-    // 3. Quick Newsletter / Brochure Download Form
-    const brochureForm = document.getElementById("form-brochure");
-    if (brochureForm) {
-      brochureForm.addEventListener("submit", (e) => {
-        e.preventDefault();
-        this.showToast("📄 YAD Auto 2025/2026 Complete EV Catalog is downloading...", "success");
-        brochureForm.reset();
-      });
-    }
-
-    // 4. Contact Us Inquiry Form
+    // 3. Contact Us Inquiry Form
     const contactForm = document.getElementById("form-contact-main");
     if (contactForm) {
       contactForm.addEventListener("submit", (e) => {
         e.preventDefault();
-        this.showToast("✉️ Thank you! Your inquiry has been dispatched to YAD Auto Industries Head Office.", "success");
+        const nameInput = contactForm.querySelector("input[name='name']");
+        const name = nameInput ? nameInput.value : "Customer";
+        this.showToast(`✉️ Thank you ${name}! Your inquiry has been dispatched to YAD Auto Industries Head Office.`, "success");
         contactForm.reset();
       });
     }
@@ -227,21 +235,24 @@ class FormModalManager {
     const toast = document.createElement("div");
     toast.className = `toast-message toast-${type}`;
     toast.innerHTML = `
-      <div class="toast-content">
+      <div class="toast-content" style="display: flex; align-items: center; gap: 0.6rem;">
         <span>${message}</span>
       </div>
-      <button class="toast-close" onclick="this.parentElement.remove()">&times;</button>
+      <button class="toast-close" type="button" aria-label="Close notification">&times;</button>
     `;
+
+    toast.querySelector(".toast-close").addEventListener("click", () => {
+      toast.remove();
+    });
 
     toastContainer.appendChild(toast);
 
     setTimeout(() => {
       toast.classList.add("toast-fade-out");
       setTimeout(() => toast.remove(), 400);
-    }, 4500);
+    }, 5000);
   }
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  window.formModalManager = new FormModalManager();
-});
+// Instantiate immediately and export to window
+window.formModalManager = new FormModalManager();

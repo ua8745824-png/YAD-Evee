@@ -52,6 +52,14 @@ function initNavbar() {
         mobileToggle.setAttribute("aria-expanded", "false");
       });
     });
+
+    // Close mobile drawer when clicking outside
+    document.addEventListener("click", (e) => {
+      if (!navDrawer.contains(e.target) && !mobileToggle.contains(e.target) && navDrawer.classList.contains("open")) {
+        navDrawer.classList.remove("open");
+        mobileToggle.setAttribute("aria-expanded", "false");
+      }
+    });
   }
 
   // Active link spy on scroll
@@ -60,7 +68,7 @@ function initNavbar() {
     const scrollY = window.pageYOffset;
     sections.forEach(current => {
       const sectionHeight = current.offsetHeight;
-      const sectionTop = current.offsetTop - 120;
+      const sectionTop = current.offsetTop - 140;
       const sectionId = current.getAttribute("id");
 
       if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
@@ -101,7 +109,7 @@ function renderProductsGrid(filterCategory = "all") {
       <div class="product-img-wrapper">
         <img src="${model.image}" alt="${model.name}" loading="lazy" class="product-img" />
         <div class="product-hover-overlay">
-          <button class="btn btn-sm btn-outline-light" onclick="window.vehicleVisualizer.setModel('${model.id}'); document.getElementById('visualizer').scrollIntoView({behavior: 'smooth'});">
+          <button type="button" class="btn btn-sm btn-outline-light" onclick="window.vehicleVisualizer.setModel('${model.id}'); document.getElementById('visualizer').scrollIntoView({behavior: 'smooth'});">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
             Interactive 360 View
           </button>
@@ -149,7 +157,7 @@ function renderProductsGrid(filterCategory = "all") {
             <span class="price-val">${model.estimatedPrice}</span>
           </div>
           <div class="product-cta-group">
-            <button class="btn btn-sm btn-primary" onclick="window.formModalManager.openTestRideModal('${model.id}')">
+            <button type="button" class="btn btn-sm btn-primary" data-open-modal="test-ride" data-model-id="${model.id}">
               Book Test Ride
             </button>
           </div>
@@ -207,7 +215,7 @@ function renderDealersList(filterCity = "all") {
         <a href="https://maps.google.com/?q=${encodeURIComponent(dealer.address)}" target="_blank" rel="noopener" class="btn btn-xs btn-outline-light">
           Get Directions ↗
         </a>
-        <button class="btn btn-xs btn-primary" onclick="window.formModalManager.openTestRideModal('ev2-7')">
+        <button type="button" class="btn btn-xs btn-primary" data-open-modal="test-ride" data-model-id="ev2-7">
           Visit Showroom
         </button>
       </div>
@@ -236,7 +244,7 @@ function renderFaqs() {
 
   container.innerHTML = YAD_DATA.faqs.map((faq, idx) => `
     <div class="faq-item ${idx === 0 ? 'active' : ''}">
-      <button class="faq-question" aria-expanded="${idx === 0 ? 'true' : 'false'}">
+      <button type="button" class="faq-question" aria-expanded="${idx === 0 ? 'true' : 'false'}">
         <span>${faq.q}</span>
         <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
       </button>
@@ -253,7 +261,6 @@ function renderFaqs() {
       const parent = qBtn.parentElement;
       const wasActive = parent.classList.contains("active");
 
-      // Close all
       container.querySelectorAll(".faq-item").forEach(item => {
         item.classList.remove("active");
         item.querySelector(".faq-question")?.setAttribute("aria-expanded", "false");
@@ -281,7 +288,7 @@ function initStatsCounters() {
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.5 });
+  }, { threshold: 0.3 });
 
   counters.forEach(c => observer.observe(c));
 }
@@ -297,12 +304,12 @@ function animateCounter(el, target, suffix) {
     const easeProgress = 1 - Math.pow(1 - progress, 3);
     const current = Math.floor(easeProgress * target);
 
-    el.textContent = `${current}${suffix}`;
+    el.textContent = `${current.toLocaleString()}${suffix}`;
 
     if (progress < 1) {
       requestAnimationFrame(update);
     } else {
-      el.textContent = `${target}${suffix}`;
+      el.textContent = `${target.toLocaleString()}${suffix}`;
     }
   }
 
@@ -318,29 +325,19 @@ function initScrollAnimations() {
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.15 });
+  }, { threshold: 0.1 });
 
   revealElements.forEach(el => observer.observe(el));
 }
 
 /* ==========================================================================
-   6. WhatsApp Floating Quick Inquiry Widget
+   6. WhatsApp Floating Quick Inquiry Widget & Back to Top
    ========================================================================== */
 function initWhatsAppWidget() {
-  const waBtn = document.getElementById("floating-whatsapp-btn");
-  if (waBtn) {
-    waBtn.addEventListener("click", (e) => {
-      e.preventDefault();
-      const message = encodeURIComponent("Hello YAD Auto Industries! I am interested in purchasing an electric scooty / booking a test ride.");
-      window.open(`https://wa.me/923001234567?text=${message}`, "_blank");
-    });
-  }
-
-  // Back to top
   const backToTop = document.getElementById("back-to-top-btn");
   if (backToTop) {
     window.addEventListener("scroll", () => {
-      if (window.scrollY > 500) {
+      if (window.scrollY > 400) {
         backToTop.classList.add("visible");
       } else {
         backToTop.classList.remove("visible");

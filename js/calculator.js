@@ -6,11 +6,11 @@ class SavingsCalculator {
   constructor() {
     this.dailyKm = 40;
     this.petrolPrice = 280; // PKR per liter
-    this.petrolMileage = 40; // km per liter (standard 70cc / 100cc)
-    this.petrolMaintenancePerKm = 1.2; // PKR (oil changes, plugs, chains, filters)
+    this.petrolMileage = 40; // km per liter (standard 70cc)
+    this.petrolMaintenancePerKm = 1.2; // PKR
     this.electricityRate = 48; // PKR per unit (kWh)
     this.evUnitsPer100Km = 1.8; // kWh per 100km
-    this.evMaintenancePerKm = 0.15; // minimal brake pads/tires
+    this.evMaintenancePerKm = 0.15;
     
     this.init();
   }
@@ -22,23 +22,29 @@ class SavingsCalculator {
 
   bindEvents() {
     const kmSlider = document.getElementById("calc-daily-km");
-    const kmDisplay = document.getElementById("calc-km-val");
     const petrolInput = document.getElementById("calc-petrol-price");
     const bikeTypeRadios = document.querySelectorAll('input[name="calc-bike-type"]');
 
     if (kmSlider) {
-      kmSlider.addEventListener("input", (e) => {
-        this.dailyKm = parseFloat(e.target.value) || 30;
+      const updateKm = (val) => {
+        this.dailyKm = Math.max(10, Math.min(150, parseFloat(val) || 40));
+        kmSlider.value = this.dailyKm;
+        const kmDisplay = document.getElementById("calc-km-val");
         if (kmDisplay) kmDisplay.textContent = `${this.dailyKm} km / day`;
         this.calculateAndRender();
-      });
+      };
+
+      kmSlider.addEventListener("input", (e) => updateKm(e.target.value));
+      kmSlider.addEventListener("change", (e) => updateKm(e.target.value));
     }
 
     if (petrolInput) {
-      petrolInput.addEventListener("input", (e) => {
-        this.petrolPrice = parseFloat(e.target.value) || 280;
+      const updatePetrol = (val) => {
+        this.petrolPrice = Math.max(150, parseFloat(val) || 280);
         this.calculateAndRender();
-      });
+      };
+      petrolInput.addEventListener("input", (e) => updatePetrol(e.target.value));
+      petrolInput.addEventListener("change", (e) => updatePetrol(e.target.value));
     }
 
     bikeTypeRadios.forEach(radio => {
@@ -54,6 +60,17 @@ class SavingsCalculator {
           this.petrolMaintenancePerKm = 2.5;
         }
         this.calculateAndRender();
+      });
+    });
+
+    // Preset Commute Buttons if clicked
+    document.querySelectorAll("[data-set-km]").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const km = parseFloat(btn.getAttribute("data-set-km"));
+        if (kmSlider) {
+          kmSlider.value = km;
+          kmSlider.dispatchEvent(new Event("input"));
+        }
       });
     });
   }
@@ -76,13 +93,13 @@ class SavingsCalculator {
     const yearlyEvCost = monthlyEvCost * 12;
 
     // 3. Savings
-    const monthlySavings = monthlyPetrolCost - monthlyEvCost;
-    const yearlySavings = yearlyPetrolCost - yearlyEvCost;
+    const monthlySavings = Math.max(0, monthlyPetrolCost - monthlyEvCost);
+    const yearlySavings = monthlySavings * 12;
     const threeYearSavings = yearlySavings * 3;
 
-    // 4. Environmental Impact (approx. 0.085 kg CO2 per km from petrol bike)
+    // 4. Environmental Impact
     const yearlyCo2SavedKg = Math.round(this.dailyKm * 365 * 0.085);
-    const treesEquivalent = Math.max(1, Math.round(yearlyCo2SavedKg / 21)); // 1 mature tree absorbs ~21kg CO2/year
+    const treesEquivalent = Math.max(1, Math.round(yearlyCo2SavedKg / 21));
 
     return {
       dailyKm: this.dailyKm,
@@ -101,7 +118,6 @@ class SavingsCalculator {
   calculateAndRender() {
     const results = this.calculate();
 
-    // Update DOM elements with animated formatting
     this.updateText("val-monthly-savings", `PKR ${results.monthlySavings.toLocaleString()}`);
     this.updateText("val-yearly-savings", `PKR ${results.yearlySavings.toLocaleString()}`);
     this.updateText("val-3yr-savings", `PKR ${results.threeYearSavings.toLocaleString()}`);
@@ -112,7 +128,7 @@ class SavingsCalculator {
     this.updateText("val-petrol-per-km", `Rs. ${results.petrolCostPerKm}`);
     this.updateText("val-ev-per-km", `Rs. ${results.evCostPerKm}`);
 
-    this.updateText("val-co2-saved", `${results.yearlyCo2SavedKg} kg`);
+    this.updateText("val-co2-saved", `${results.yearlyCo2SavedKg.toLocaleString()} kg`);
     this.updateText("val-trees-count", `${results.treesEquivalent} Trees`);
 
     // Update comparison progress bar
@@ -121,7 +137,7 @@ class SavingsCalculator {
     
     if (petrolBar && evBar) {
       petrolBar.style.width = "100%";
-      const evPercentage = Math.max(8, Math.min(100, (results.monthlyEvCost / results.monthlyPetrolCost) * 100));
+      const evPercentage = Math.max(8, Math.min(100, (results.monthlyEvCost / (results.monthlyPetrolCost || 1)) * 100));
       evBar.style.width = `${evPercentage}%`;
     }
   }
@@ -134,6 +150,5 @@ class SavingsCalculator {
   }
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  window.savingsCalculator = new SavingsCalculator();
-});
+// Instantiate immediately and export to window
+window.savingsCalculator = new SavingsCalculator();

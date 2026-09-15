@@ -34,7 +34,7 @@
       </div>
       <div class="announcement-right">
         <span>🏭 Factory: 91-B Sunder Small Industrial Estate, Lahore</span>
-        <a href="#dealerships" data-open-modal="dealership">Apply for Dealership →</a>
+        <button type="button" data-open-modal="dealership" style="color: var(--primary); text-decoration: underline; cursor: pointer;">Apply for Dealership →</button>
       </div>
     </div>
   </aside>
@@ -72,14 +72,14 @@
 
       <!-- Action Buttons -->
       <div class="header-actions">
-        <button class="btn btn-sm btn-outline-gold btn-desktop-only" data-open-modal="dealership">
+        <button type="button" class="btn btn-sm btn-outline-gold btn-desktop-only" data-open-modal="dealership">
           Dealership
         </button>
-        <button class="btn btn-sm btn-primary" data-open-modal="test-ride" data-model-id="ev2-7">
+        <button type="button" class="btn btn-sm btn-primary" data-open-modal="test-ride" data-model-id="ev2-7">
           Book Test Ride
         </button>
         <!-- Mobile Hamburger Toggle -->
-        <button class="mobile-toggle" id="mobile-menu-toggle" aria-label="Toggle Navigation Menu" aria-expanded="false">
+        <button type="button" class="mobile-toggle" id="mobile-menu-toggle" aria-label="Toggle Navigation Menu" aria-expanded="false">
           <span></span>
           <span></span>
           <span></span>
@@ -99,8 +99,8 @@
       <a href="#faq" class="drawer-link">Frequently Asked Questions</a>
       <a href="#contact" class="drawer-link">Contact & Locations</a>
       <div style="display: flex; gap: 0.8rem; margin-top: 1rem;">
-        <button class="btn btn-sm btn-primary btn-block" data-open-modal="test-ride">Book Free Test Ride</button>
-        <button class="btn btn-sm btn-outline-gold btn-block" data-open-modal="dealership">Dealership Proposal</button>
+        <button type="button" class="btn btn-sm btn-primary btn-block" data-open-modal="test-ride">Book Free Test Ride</button>
+        <button type="button" class="btn btn-sm btn-outline-gold btn-block" data-open-modal="dealership">Dealership Proposal</button>
       </div>
     </nav>
   </header>
@@ -128,7 +128,7 @@
         </p>
 
         <div class="hero-actions">
-          <button class="btn btn-lg btn-primary" data-open-modal="test-ride" data-model-id="ev2-7">
+          <button type="button" class="btn btn-lg btn-primary" data-open-modal="test-ride" data-model-id="ev2-7">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             Book Free Test Ride
           </button>
@@ -255,7 +255,7 @@
           <div class="vis-display-stage">
             <div class="vis-underglow" id="vis-underglow"></div>
             <img src="assets/images/hero_scooty.jpg" alt="YAD Electric Scooty" id="vis-scooter-img" class="vis-scooter-img" />
-            <button class="vis-sound-btn" id="vis-sound-toggle">
+            <button type="button" class="vis-sound-btn" id="vis-sound-toggle">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
               <span>Play EV Motor Sound</span>
             </button>
@@ -305,7 +305,7 @@
                 <div style="font-size: 0.75rem; color: var(--text-muted);">Estimated Factory Price</div>
                 <div style="font-family: var(--font-heading); font-size: 1.5rem; font-weight: 800; color: var(--gold);" id="vis-model-price">PKR 385,000</div>
               </div>
-              <button class="btn btn-primary" id="vis-book-btn">
+              <button type="button" class="btn btn-primary" id="vis-book-btn">
                 Book This Model
               </button>
             </div>
@@ -330,10 +330,10 @@
 
       <!-- Filter Tabs & Compare Button -->
       <div class="products-filter-bar">
-        <button class="products-filter-tab active" data-category="all">All Vehicles</button>
-        <button class="products-filter-tab" data-category="2-wheeler">2-Wheeler Scooties (EV2)</button>
-        <button class="products-filter-tab" data-category="3-wheeler">Commercial 3-Wheelers (EV3)</button>
-        <button class="btn btn-outline-gold" data-open-modal="compare" style="margin-left: auto;">
+        <button type="button" class="products-filter-tab active" data-category="all">All Vehicles</button>
+        <button type="button" class="products-filter-tab" data-category="2-wheeler">2-Wheeler Scooties (EV2)</button>
+        <button type="button" class="products-filter-tab" data-category="3-wheeler">Commercial 3-Wheelers (EV3)</button>
+        <button type="button" class="btn btn-outline-gold" data-open-modal="compare" style="margin-left: auto;">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
           Compare Full Specs Matrix
         </button>
@@ -363,17 +363,21 @@
         <div class="calc-grid">
           <!-- Left Controls -->
           <div class="calc-controls">
-            <!-- 1. Daily Commute Slider -->
+            <!-- 1. Daily Commute Slider with Quick Preset Buttons -->
             <div class="calc-control-group">
               <div class="calc-label-row">
                 <span>Daily Commute Distance:</span>
                 <span class="calc-val-pill" id="calc-km-val">40 km / day</span>
               </div>
               <input type="range" id="calc-daily-km" class="calc-range-slider" min="10" max="120" value="40" step="5" />
-              <div style="display: flex; justify-content: space-between; font-size: 0.72rem; color: var(--text-dim);">
-                <span>10 km (Short commute)</span>
-                <span>60 km (Average)</span>
-                <span>120 km (Rider/Delivery)</span>
+              
+              <!-- Quick Preset Buttons -->
+              <div style="display: flex; gap: 0.5rem; margin-top: 0.4rem; flex-wrap: wrap;">
+                <button type="button" class="btn btn-xs btn-outline" data-set-km="20">20 km</button>
+                <button type="button" class="btn btn-xs btn-outline" data-set-km="40">40 km</button>
+                <button type="button" class="btn btn-xs btn-outline" data-set-km="60">60 km</button>
+                <button type="button" class="btn btn-xs btn-outline" data-set-km="80">80 km</button>
+                <button type="button" class="btn btn-xs btn-outline" data-set-km="120">120 km (Rider)</button>
               </div>
             </div>
 
@@ -472,7 +476,7 @@
               </div>
             </div>
 
-            <button class="btn btn-primary btn-block" data-open-modal="test-ride">
+            <button type="button" class="btn btn-primary btn-block" data-open-modal="test-ride">
               Start Saving Now · Book a Test Ride
             </button>
           </div>
@@ -620,13 +624,13 @@
 
       <!-- City Filter Pills -->
       <div class="dealer-filter-pills">
-        <button class="dealer-city-pill active" data-city="all">All Locations</button>
-        <button class="dealer-city-pill" data-city="Lahore">Lahore</button>
-        <button class="dealer-city-pill" data-city="Karachi">Karachi</button>
-        <button class="dealer-city-pill" data-city="Islamabad">Islamabad / Rawalpindi</button>
-        <button class="dealer-city-pill" data-city="Faisalabad">Faisalabad</button>
-        <button class="dealer-city-pill" data-city="Multan">Multan</button>
-        <button class="dealer-city-pill" data-city="Peshawar">Peshawar</button>
+        <button type="button" class="dealer-city-pill active" data-city="all">All Locations</button>
+        <button type="button" class="dealer-city-pill" data-city="Lahore">Lahore</button>
+        <button type="button" class="dealer-city-pill" data-city="Karachi">Karachi</button>
+        <button type="button" class="dealer-city-pill" data-city="Islamabad">Islamabad / Rawalpindi</button>
+        <button type="button" class="dealer-city-pill" data-city="Faisalabad">Faisalabad</button>
+        <button type="button" class="dealer-city-pill" data-city="Multan">Multan</button>
+        <button type="button" class="dealer-city-pill" data-city="Peshawar">Peshawar</button>
       </div>
 
       <!-- Dealers Grid -->
@@ -643,7 +647,7 @@
             Join the YAD authorized dealer network in your city. High ROI margins, brand marketing support, and technician training provided.
           </p>
         </div>
-        <button class="btn btn-lg btn-gold" data-open-modal="dealership">
+        <button type="button" class="btn btn-lg btn-gold" data-open-modal="dealership">
           Submit Dealership Proposal
         </button>
       </div>
@@ -774,7 +778,7 @@
             <a href="#home">Home</a>
             <a href="#manufacturing">Profile</a>
             <a href="#models">Products</a>
-            <a href="#dealerships" data-open-modal="dealership">Proposal Form</a>
+            <button type="button" data-open-modal="dealership" style="text-align: left; color: #9ca3af; font-size: 0.98rem; cursor: pointer; padding: 0;">Proposal Form</button>
             <a href="#faq">FAQ</a>
             <a href="#contact">Contact Us</a>
           </nav>
@@ -817,7 +821,7 @@
   <div class="modal-container" id="modal-test-ride" role="dialog" aria-modal="true" aria-labelledby="modal-tr-title">
     <div class="modal-backdrop"></div>
     <div class="modal-dialog">
-      <button class="modal-close" aria-label="Close modal">&times;</button>
+      <button type="button" class="modal-close" aria-label="Close modal">&times;</button>
       <span class="badge badge-green" style="margin-bottom: 0.5rem;">Free No-Obligation Experience</span>
       <h3 class="modal-title" id="modal-tr-title">Book Your Free Test Ride</h3>
       <p class="modal-desc">Select your desired model and preferred showroom location across Pakistan.</p>
@@ -832,6 +836,7 @@
               <option value="ev2-4">YAD EV2-4 (50 km/h Smart City Scooty)</option>
               <option value="ev2-1">YAD EV2-1 (40 km/h Lightweight Urban Scooty)</option>
               <option value="ev3-3-pro">YAD EV3-3 Pro (Commercial Heavy Loader)</option>
+              <option value="ev3-1">YAD EV3-1 (Commercial City Trike)</option>
             </select>
           </div>
 
@@ -875,7 +880,7 @@
   <div class="modal-container" id="modal-dealership" role="dialog" aria-modal="true" aria-labelledby="modal-dl-title">
     <div class="modal-backdrop"></div>
     <div class="modal-dialog">
-      <button class="modal-close" aria-label="Close modal">&times;</button>
+      <button type="button" class="modal-close" aria-label="Close modal">&times;</button>
       <span class="badge badge-gold" style="margin-bottom: 0.5rem;">Business Partnership</span>
       <h3 class="modal-title" id="modal-dl-title">Dealership & Franchise Proposal</h3>
       <p class="modal-desc">Join Pakistan's premier EV manufacturing network. Please provide your business details.</p>
@@ -938,7 +943,7 @@
   <div class="modal-container" id="modal-compare" role="dialog" aria-modal="true" aria-labelledby="modal-cmp-title">
     <div class="modal-backdrop"></div>
     <div class="modal-dialog modal-dialog-wide">
-      <button class="modal-close" aria-label="Close modal">&times;</button>
+      <button type="button" class="modal-close" aria-label="Close modal">&times;</button>
       <span class="badge badge-cyan" style="margin-bottom: 0.5rem;">Side-by-Side Comparison</span>
       <h3 class="modal-title" id="modal-cmp-title">Technical Specifications Matrix</h3>
       <p class="modal-desc">Compare motor torque, battery chemistry, speeds, and ranges across all YAD EV2 models.</p>
@@ -954,7 +959,7 @@
        ======================================================================== -->
   <div class="floating-actions-wrap">
     <!-- WhatsApp Direct Chat Button -->
-    <a href="#" class="btn-floating-wa" id="floating-whatsapp-btn" aria-label="Chat on WhatsApp with YAD Sales">
+    <a href="https://wa.me/923001234567?text=Hello%20YAD%20Auto%20Industries!%20I%20am%20interested%20in%20an%20Electric%20Scooty." target="_blank" rel="noopener" class="btn-floating-wa" id="floating-whatsapp-btn" aria-label="Chat on WhatsApp with YAD Sales">
       <svg viewBox="0 0 24 24">
         <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.698c.969.54 2.051.826 3.197.827l.004-.001c3.181 0 5.767-2.586 5.768-5.766 0-3.18-2.587-5.713-5.773-5.713zm3.393 8.354c-.149.42-1.076.804-1.488.857-.404.053-.93.078-1.503-.105-.724-.23-1.637-.779-2.502-1.644-.94-.94-1.538-2.029-1.745-2.731-.207-.702.046-1.119.222-1.311.176-.192.42-.239.569-.239.149 0 .298.003.42.012.128.009.298-.053.468.353.176.42.607 1.483.66 1.589.053.106.089.231.018.373-.071.142-.107.23-.213.355-.106.124-.225.278-.321.373-.107.106-.219.222-.094.435.125.213.553.914 1.189 1.481.818.73 1.509.957 1.722 1.063.213.106.338.089.463-.053.125-.142.533-.62.675-.833.142-.213.284-.177.474-.106.19.071 1.208.569 1.415.675.207.106.344.16.397.248.053.088.053.513-.096.933zM12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.982-1.396C8.423 21.492 10.153 22 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/>
       </svg>
@@ -962,7 +967,7 @@
   </div>
 
   <!-- Back to Top Button -->
-  <button class="btn-back-to-top" id="back-to-top-btn" aria-label="Back to top">
+  <button type="button" class="btn-back-to-top" id="back-to-top-btn" aria-label="Back to top">
     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
   </button>
 
